@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+    <h3>Select a book</h3>
+
+    <table cellspacing="5" cellpadding="5" border="5">
+        <tr>
+            <th>
+                Books
+            </th>
+            <th>
+                Authors
+            </th>
+        </tr>
+
+        {% for book in booklist %}
+
+        <tr>
+            <td>
+                <a href="/reviews/{{loop.index}}">{{book['book_name']}}</a>
+            </td>
+            <td>
+                {{book['author']}}
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reviews</title>
+</head>
+<body>
+    <h3>
+        Reviews for {{reviews[0]['book_name']}}
+    </h3>
+
+    <table cellspacing="5" cellpadding="5" border="5">
+        <tr>
+            <th>Reader Name</th>
+            <th>Rating</th>
+            <th>Comment</th>
+        </tr>
+
+        {% for review in reviews %}
+
+        <tr>
+            <td>{{review['name']}}</td>
+            <td>{{review['rating']}}</td>
+            <td>{{review['comment']}}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</body>
+</html>
