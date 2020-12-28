@@ -56,35 +56,38 @@ def search_books():
 def get_reviews(book_index):
     book = booklist[int(book_index) - 1]
     book_link = "https://www.goodreads.com" + book['book_link']
-    book_res = requests.get(book_link)
-    book_html = bs(book_res.text, "html.parser")
-    review_boxes = book_html.findAll('div', {'class': 'friendReviews elementListBrown'})
-    reviews = []
+    try:
+        book_res = requests.get(book_link)
+        book_html = bs(book_res.text, "html.parser")
+        review_boxes = book_html.findAll('div', {'class': 'friendReviews elementListBrown'})
+        reviews = []
 
-    for review in review_boxes:
-        try:
-            name = review.div.div.div.div.span.text
-        except:
-            name = 'Unknown'
+        for review in review_boxes:
+            try:
+                name = review.div.div.div.div.span.text
+            except:
+                name = 'Unknown'
 
-        try:
-            rating = review.div.div.findAll('span', {'class': 'staticStars notranslate'})[0]['title']
-        except:
-            rating = 'No rating'
+            try:
+                rating = review.div.div.findAll('span', {'class': 'staticStars notranslate'})[0]['title']
+            except:
+                rating = 'No rating'
 
-        try:
-            content = review.div.div.div.findAll('div', {'class': 'reviewText stacked'})[0].span.contents
-            if len(content) > 3:
-                comment = content[3].text
-            else:
-                comment = content[1].text
-        except:
-            comment = 'No comment'
+            try:
+                content = review.div.div.div.findAll('div', {'class': 'reviewText stacked'})[0].span.contents
+                if len(content) > 3:
+                    comment = content[3].text
+                else:
+                    comment = content[1].text
+            except:
+                comment = 'No comment'
 
-        temp_dict = {'book_name': book['book_name'], 'name': name, 'rating': rating_dict[rating], 'comment': comment}
-        reviews.append(temp_dict)
+            temp_dict = {'book_name': book['book_name'], 'name': name, 'rating': rating_dict[rating], 'comment': comment}
+            reviews.append(temp_dict)
 
-    return render_template('result.html', reviews=reviews)
+        return render_template('result.html', reviews=reviews)
+    except:
+        return "No reviews available"
 
 
 if __name__ == '__main__':
