@@ -1,6 +1,6 @@
 # Book Review Srapper
 
-This is review scrapper project which takes a name of book from the user, then searches that book on [goodreads](https://www.goodreads.com/). Then is looks for reviews of the 
+This is review scrapper project which takes a name of book from the user, then searches that book on [goodreads](https://www.goodreads.com/). Then it looks for reviews of the 
 book in the website and exctracts them and returns the same back to user in a table.
 
 ## How to run the project
@@ -24,5 +24,14 @@ This should start your app and provide you a url to access it.
 
 ### Search page.
 
+![search](https://github.com/AnkitS97/review-scrapper/blob/main/search_page.png?raw=true)
   
     
+### Selecting a book
+
+![select](https://github.com/AnkitS97/review-scrapper/blob/main/select_page.png?raw=true)
+
+### Reviews
+
+![select](https://github.com/AnkitS97/review-scrapper/blob/main/result_page.png?raw=true)
+
